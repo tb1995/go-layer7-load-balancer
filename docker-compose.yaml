@@ -1,0 +1,83 @@
+services:
+  server1:
+    image: nginx
+    container_name: server1
+    volumes:
+      - type: bind
+        source: ./servers/nginx.conf
+        target: /etc/nginx/templates/default.conf.template
+    ports:
+      - 8081:8080
+    environment:
+      SERVER: server1
+
+  server2:
+    image: nginx
+    container_name: server2
+    volumes:
+      - type: bind
+        source: ./servers/nginx.conf
+        target: /etc/nginx/templates/default.conf.template
+    ports:
+      - 8082:8080
+    environment:
+      SERVER: server2
+
+  server3:
+    image: nginx
+    container_name: server3
+    volumes:
+      - type: bind
+        source: ./servers/nginx.conf
+        target: /etc/nginx/templates/default.conf.template
+    ports:
+      - 8083:8080
+    environment:
+      SERVER: server3
+
+  server4:
+    image: nginx
+    container_name: server4
+    volumes:
+      - type: bind
+        source: ./servers/nginx.conf
+        target: /etc/nginx/templates/default.conf.template
+    ports:
+      - 8084:8080
+    environment:
+      SERVER: server4
+
+  server5:
+    image: nginx
+    container_name: server5
+    volumes:
+      - type: bind
+        source: ./servers/nginx.conf
+        target: /etc/nginx/templates/default.conf.template
+    ports:
+      - 8085:8080
+    environment:
+      SERVER: server5
+
+  server6:
+    image: nginx
+    container_name: server6
+    volumes:
+      - type: bind
+        source: ./servers/nginx.conf
+        target: /etc/nginx/templates/default.conf.template
+    ports:
+      - 8086:8080
+    environment:
+      SERVER: server6
+
+  lb:
+    container_name: lb
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: dev
+    volumes:
+      - .:/opt/app/api
+    ports:
+      - 4000:4000
